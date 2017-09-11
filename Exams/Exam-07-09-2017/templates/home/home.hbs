@@ -1,0 +1,37 @@
+{{#if isLoggedIn}}
+    <section id="viewFeed">
+        <div class="content">
+            <div class="chirper">
+
+                <h2 class="titlebar">{{username}}</h2>
+
+                <form id="formSubmitChirp" class="chirp-form" action="#/chirp" method="post">
+                    <textarea name="text" class="chirp-input"></textarea>
+                    <input class="chirp-submit" id="btnSubmitChirp" value="Chirp" type="submit">
+                </form>
+
+                <div id="userStats" class="user-details">
+                    <span>{{chirpsCount}} chirps</span> | <span>{{following}} following</span> | <span>{{followers}} followers</span>
+                </div>
+            </div>
+            <div id="chirps" class="chirps"><h2 class="titlebar">Chirps</h2>
+                {{#each chirps}}
+                    {{> chirp}}
+                {{/each}}
+            </div>
+        </div>
+    </section>
+{{else}}
+    <section id="viewLogin">
+        <div class="content">
+            <form id="formLogin" class="form" action="#/login" method="post">
+                <label>Username</label>
+                <input name="username" type="text">
+                <label>Password</label>
+                <input name="password" type="password">
+                <input id="btnLogin" value="Sign In" type="submit">
+                <a href="#/register">Register</a>
+            </form>
+        </div>
+    </section>
+{{/if}}
